@@ -1,0 +1,22 @@
+{
+  "priority": [
+    {
+      "if": "road_class == SECONDARY",
+      "multiply_by": "0.8"
+    },
+    {
+      "if": "road_class == TERTIARY",
+      "multiply_by": "0.6"
+    },
+    {
+      "if": "road_class == RESIDENTIAL || road_class == SERVICE || road_class == UNCLASSIFIED",
+      "multiply_by": "0.1"
+    },
+    {
+      "if": "car_access == false || road_environment == FERRY || road_access == NO || road_access == PRIVATE || road_access == CUSTOMERS",
+      "multiply_by": "0"
+    }
+  ],
+  "distance_influence": 30,
+  "heading_penalty": 180
+}

@@ -1,0 +1,93 @@
+{
+  "speed": [
+    {
+      "if": "road_class == TRUNK || road_class == MOTORWAY",
+      "multiply_by": "0.5"
+    },
+    {
+      "if": "road_class == PRIMARY",
+      "multiply_by": "0.5"
+    }
+  ],
+  "priority": [
+    {
+      "if": "road_class == TRUNK || road_class == MOTORWAY",
+      "multiply_by": "0.8"
+    },
+    {
+      "if": "road_class == PRIMARY",
+      "multiply_by": "0.7"
+    },
+    {
+      "if": "road_class == SECONDARY",
+      "multiply_by": "1"
+    },
+    {
+      "if": "road_class == TERTIARY",
+      "multiply_by": "0.9"
+    },
+    {
+      "if": "road_class == RESIDENTIAL || road_class == SERVICE || road_class == UNCLASSIFIED",
+      "multiply_by": "0.4"
+    },
+    {
+      "if": "car_access == false || road_environment == FERRY || road_access == NO || road_access == PRIVATE || road_access == CUSTOMERS",
+      "multiply_by": "0"
+    }
+  ],
+  "areas": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "id": "bkkmosttraffic1",
+        "properties": {},
+        "geometry": {
+          "coordinates": [
+            [
+              [
+                100.53096944312483,
+                13.748875927622777
+              ],
+              [
+                100.53047162783997,
+                13.745917713048655
+              ],
+              [
+                100.55173126886262,
+                13.742362117245733
+              ],
+              [
+                100.57061896979133,
+                13.729703746301766
+              ],
+              [
+                100.57143890084916,
+                13.733999131249462
+              ],
+              [
+                100.56215610993422,
+                13.74341456725233
+              ],
+              [
+                100.53189940947493,
+                13.7533785056104
+              ],
+              [
+                100.53184084296959,
+                13.753065625314761
+              ],
+              [
+                100.53096944312483,
+                13.748875927622777
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        }
+      }
+    ]
+  },
+  "distance_influence": 100,
+  "heading_penalty": 180
+}
