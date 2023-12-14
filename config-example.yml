@@ -3,7 +3,7 @@ graphhopper:
   # OpenStreetMap input file PBF or XML, can be changed via command line -Ddw.graphhopper.datareader.file=some.pbf
   datareader.file: ""
   # Local folder used by graphhopper to store its data
-  graph.location: graph-cache
+  graph.location: graph-cache-test
 
 
   ##### Routing Profiles ####
@@ -29,12 +29,24 @@ graphhopper:
   # profiles (see below). Or at least limit the number of `routing.max_visited_nodes`.
 
   profiles:
-    - name: car
+    - name: kh_motorcycle
+      vehicle: motorcycle
+      turn_costs: true
+      u_turn_costs: 120
+      weighting: custom
+      custom_model_file: tuktuk.json
+    - name: kh_car
       vehicle: car
-      custom_model:
-        distance_influence: 70
-#      turn_costs: true
-#      u_turn_costs: 60
+      weighting: custom
+      custom_model_file: tuktuk.json
+      turn_costs: true
+      u_turn_costs: 120
+    - name: kh_tuktuk
+      vehicle: car
+      turn_costs: true
+      weighting: custom
+      custom_model_file: tuktuk.json
+      u_turn_costs: 120
 
 #    - name: bike
 #      # to use the bike vehicle make sure to not ignore cycleways etc., see import.osm.ignored_highways below
@@ -51,8 +63,8 @@ graphhopper:
   # list you can define for which of the above routing profiles such preparation shall be performed. Note that to support
   # profiles with `turn_costs: true` a more elaborate preparation is required (longer preparation time and more memory
   # usage) and the routing will also be slower than with `turn_costs: false`.
-  profiles_ch:
-    - profile: car
+  # profiles_ch:
+  #  - profile: car
 
   # Hybrid mode:
   # Similar to speed mode, the hybrid mode (Landmarks, LM) also speeds up routing by doing calculating auxiliary data

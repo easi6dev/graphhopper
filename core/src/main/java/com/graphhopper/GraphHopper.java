@@ -276,6 +276,9 @@ public class GraphHopper {
     }
 
     public GraphHopper setProfiles(List<Profile> profiles) {
+        profiles.forEach(profile -> {
+            logger.info(profile.toString());
+        });
         if (!profilesByName.isEmpty())
             throw new IllegalArgumentException("Cannot initialize profiles multiple times");
         if (encodingManager != null)
