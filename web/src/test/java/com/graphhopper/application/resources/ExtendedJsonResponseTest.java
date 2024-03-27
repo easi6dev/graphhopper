@@ -60,7 +60,7 @@ public class ExtendedJsonResponseTest {
 
     private List<EdgeMatch> getEdgeMatch() {
         List<EdgeMatch> list = new ArrayList<>();
-        list.add(new EdgeMatch(getEdgeIterator(), getGpxExtension()));
+        list.add(new EdgeMatch(getEdgeIterator(), getGpxExtension(), null));
         return list;
     }
 

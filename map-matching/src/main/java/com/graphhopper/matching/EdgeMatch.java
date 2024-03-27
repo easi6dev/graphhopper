@@ -28,8 +28,9 @@ public class EdgeMatch {
 
     private final EdgeIteratorState edgeState;
     private final List<State> states;
+    private final Observation observation;
 
-    public EdgeMatch(EdgeIteratorState edgeState, List<State> state) {
+    public EdgeMatch(EdgeIteratorState edgeState, List<State> state, Observation observation) {
         this.edgeState = edgeState;
 
         if (edgeState == null) {
@@ -40,6 +41,8 @@ public class EdgeMatch {
         if (this.states == null) {
             throw new IllegalStateException("state list cannot be null");
         }
+
+        this.observation = observation;
     }
 
     public EdgeIteratorState getEdgeState() {
@@ -50,8 +53,8 @@ public class EdgeMatch {
         return states;
     }
 
+    public Observation getObservation() { return observation; }
+
     @Override
-    public String toString() {
-        return "edge:" + edgeState + ", states:" + states;
-    }
+    public String toString() { return "edge:" + edgeState + ", states:" + states + ", observation:" + observation; }
 }

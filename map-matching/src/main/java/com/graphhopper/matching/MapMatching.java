@@ -472,6 +472,7 @@ public class MapMatching {
         List<EdgeMatch> edgeMatches = new ArrayList<>();
         List<State> states = new ArrayList<>();
         EdgeIteratorState currentDirectedRealEdge = null;
+        Observation currentObservation = null; // observation for currentDirectedRealEdge
         for (SequenceState<State, Observation, Path> transitionAndState : seq) {
             // transition (except before the first state)
             if (transitionAndState.transitionDescriptor != null) {
@@ -479,12 +480,13 @@ public class MapMatching {
                     EdgeIteratorState newDirectedRealEdge = resolveToRealEdge(edge);
                     if (currentDirectedRealEdge != null) {
                         if (!equalEdges(currentDirectedRealEdge, newDirectedRealEdge)) {
-                            EdgeMatch edgeMatch = new EdgeMatch(currentDirectedRealEdge, states);
+                            EdgeMatch edgeMatch = new EdgeMatch(currentDirectedRealEdge, states, transitionAndState.observation);
                             edgeMatches.add(edgeMatch);
                             states = new ArrayList<>();
                         }
                     }
                     currentDirectedRealEdge = newDirectedRealEdge;
+                    currentObservation = transitionAndState.observation;
                 }
             }
             // state
@@ -492,17 +494,18 @@ public class MapMatching {
                 EdgeIteratorState newDirectedRealEdge = resolveToRealEdge(transitionAndState.state.getOutgoingVirtualEdge());
                 if (currentDirectedRealEdge != null) {
                     if (!equalEdges(currentDirectedRealEdge, newDirectedRealEdge)) {
-                        EdgeMatch edgeMatch = new EdgeMatch(currentDirectedRealEdge, states);
+                        EdgeMatch edgeMatch = new EdgeMatch(currentDirectedRealEdge, states, transitionAndState.observation);
                         edgeMatches.add(edgeMatch);
                         states = new ArrayList<>();
                     }
                 }
                 currentDirectedRealEdge = newDirectedRealEdge;
+                currentObservation = transitionAndState.observation;
             }
             states.add(transitionAndState.state);
         }
         if (currentDirectedRealEdge != null) {
-            EdgeMatch edgeMatch = new EdgeMatch(currentDirectedRealEdge, states);
+            EdgeMatch edgeMatch = new EdgeMatch(currentDirectedRealEdge, states, currentObservation);
             edgeMatches.add(edgeMatch);
         }
         return edgeMatches;
