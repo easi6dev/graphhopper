@@ -2,7 +2,7 @@
     "priority": [
         {
             "if": "road_class == MOTORWAY",
-            "multiply_by": "0"
+            "multiply_by": "0.2"
         },
         {
             "if": "motorcycle_access == false || road_environment == FERRY || road_access == NO || road_access == PRIVATE || road_access == CUSTOMERS",

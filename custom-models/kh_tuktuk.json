@@ -21,7 +21,7 @@
       "multiply_by": "0.2"
     },
     {
-      "if": "car_access == false || road_access == NO || road_access == PRIVATE || road_access == CUSTOMERS",
+      "if": "motorcycle_access == false || road_access == NO || road_access == PRIVATE || road_access == CUSTOMERS",
       "multiply_by": "0"
     },
     {
