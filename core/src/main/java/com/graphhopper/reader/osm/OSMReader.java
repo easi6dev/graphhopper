@@ -357,6 +357,10 @@ public class OSMReader {
                 LOGGER.info("Found barrier {} at edge {} points {}", tagValue, edge.getEdge(), finalPointList.toString());
                 list.add(new EdgeKVStorage.KeyValue("barrier", tagValue));
             }
+            if (tagKey.equalsIgnoreCase("highway") && tagValue.toString().equalsIgnoreCase("toll_gantry")) {
+                LOGGER.info("Found highway {} at edge {} points {}", tagValue, edge.getEdge(), finalPointList.toString());
+                list.add(new EdgeKVStorage.KeyValue("barrier", "toll_booth"));
+            }
         });
         if (!list.isEmpty())
             edge.setKeyValues(list);
