@@ -355,7 +355,7 @@ public class OSMReader {
         nodeTags.forEach((tagKey, tagValue) -> {
             if (tagKey.equalsIgnoreCase("barrier") && tagValue.toString().equalsIgnoreCase("toll_booth")) {
                 LOGGER.info("Found barrier {} at edge {} points {}", tagValue, edge.getEdge(), finalPointList.toString());
-                list.add(new EdgeKVStorage.KeyValue("barrier", tagValue));
+                list.add(new EdgeKVStorage.KeyValue("barrier", "toll_booth"));
             }
             if (tagKey.equalsIgnoreCase("highway") && tagValue.toString().equalsIgnoreCase("toll_gantry")) {
                 LOGGER.info("Found highway {} at edge {} points {}", tagValue, edge.getEdge(), finalPointList.toString());
