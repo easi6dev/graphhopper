@@ -350,10 +350,10 @@ public class OSMReader {
         IntsRef edgeFlags = encodingManager.createEdgeFlags();
         osmParsers.handleWayTags(edgeFlags, way, relationFlags);
         EdgeIteratorState edge = baseGraph.edge(fromIndex, toIndex).setDistance(distance).setFlags(edgeFlags);
-        List<EdgeKVStorage.KeyValue> list = way.getTag("key_values", Collections.emptyList());
+        List<EdgeKVStorage.KeyValue> list = new ArrayList<>(way.getTag("key_values", Collections.emptyList()));
         PointList finalPointList = pointList;
         nodeTags.forEach((tagKey, tagValue) -> {
-            if (tagKey.equalsIgnoreCase("barrier")) {
+            if (tagKey.equalsIgnoreCase("barrier") && tagValue.toString().equalsIgnoreCase("toll_booth")) {
                 LOGGER.info("Found barrier {} at edge {} points {}", tagValue, edge.getEdge(), finalPointList.toString());
                 list.add(new EdgeKVStorage.KeyValue("barrier", tagValue));
             }
