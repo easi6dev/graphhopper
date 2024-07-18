@@ -226,7 +226,7 @@ public class WaySegmentParser {
 
             // we keep node tags for barrier nodes
             if (splitNodeFilter.test(node)) {
-                if (nodeType == JUNCTION_NODE) {
+                if (nodeType == JUNCTION_NODE && !node.hasTag("barrier", "toll_booth")) {
                     LOGGER.debug("OSM node {} at {},{} is a barrier node at a junction. The barrier will be ignored",
                             node.getId(), Helper.round(node.getLat(), 7), Helper.round(node.getLon(), 7));
                     ignoredSplitNodes++;
