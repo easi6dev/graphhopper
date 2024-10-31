@@ -86,7 +86,7 @@ graphhopper:
       custom_model_file: th_motorcycle.json
       u_turn_costs: 120
     - name: mapmatching
-      vehicle: car
+      vehicle: roads
       turn_costs: false
       weighting: custom
       custom_model_file: mapmatching.json
